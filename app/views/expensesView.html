@@ -1,0 +1,119 @@
+<form id="search-bar">
+	<input
+		type="text"
+		name="search"
+		class="input-search"
+		placeholder="search"
+		ng-model="expensesFilter"
+	/>
+</form>
+
+<table>
+	<tr>
+		<th ng-click="doSort('date')">Date</th>
+		<th ng-click="doSort('category')">Category</th>
+		<th ng-click="doSort('description')">Description</th>
+		<th ng-click="doSort('type')">Type</th>
+		<th ng-click="doSort('amount')">Amount</th>
+		<th>&nbsp;</th>
+	</tr>
+	<tr
+		ng-repeat="expense in expenses |
+		filter: expensesFilter |
+		orderBy:sortBy:reverse  
+		track by $index"
+	>
+		<td>
+			<span ng-hide="onEdit">{{expense.date | date:"dd/MM/yy"}}</span>
+			<input
+				type="date"
+				class="form-control"
+				ng-show="onEdit"
+				ng-model="expense.update.date"
+			/>
+		</td>
+		<td>
+			<span ng-hide="onEdit">{{expense.category}}</span>
+			<!-- change to select menu -->
+			<input
+				type="text"
+				class="form-control"
+				placeholder="{{expense.category}}"
+				ng-show="onEdit"
+				ng-model="expense.update.category"
+			/>
+		</td>
+		<td>
+			<span ng-hide="onEdit">{{expense.description}}</span>
+			<input
+				type="text"
+				class="form-control"
+				placeholder="{{expense.description}}"
+				ng-show="onEdit"
+				ng-model="expense.update.description"
+			/>
+		</td>
+		<td>
+			<span ng-hide="onEdit">{{expense.type}}</span>
+			<!-- <select ng-show=fonEdit ng-model="expense.update.type">
+				<option value="" selected disabled hidden>
+					{{expense.type}}
+				</option>
+				<option value="Cash">Cash</option>
+				<option value="Credit Card">Credit Card</option>
+			</select> -->
+		</td>
+		<td>
+			<span ng-hide="onEdit"
+				>{{expense.amount | currency:"&#8362;"}}</span
+			>
+			<!-- <input
+				type="number"
+				class="form-control"
+				min="0"
+				value="{{expense.amount}}"
+				ng-show=fonEdit
+				ng-model="expense.update.amount" 
+			/> -->
+		</td>
+
+		<td>
+			<!-- EDIT  -->
+			<span
+				class="icon-btn fas fa-edit edit"
+				ng-hide="onEdit"
+				ng-click="onEdit = true;edit($index)"
+			>
+			</span>
+			<!-- DELETE  -->
+			<span
+				class="icon-btn fas fa-trash-alt delete"
+				ng-hide="onEdit"
+				ng-click="delete($index)"
+			>
+			</span>
+
+			<!-- SAVE CHANGES  -->
+			<span
+				class="icon-btn fas fa-check confirm"
+				ng-show="onEdit"
+				ng-click="onEdit = false; save($index)"
+			>
+			</span>
+			<!-- CANCEL CHANGES -->
+			<span
+				class="icon-btn fas fa-times delete"
+				ng-show="onEdit"
+				ng-click="onEdit = false; reset()"
+			>
+			</span>
+		</td>
+	</tr>
+</table>
+<br />
+<div>
+	<span><a href="#/expenses/add_new_expense"> Add New Expense </a></span>
+	<span><a href="/"> Add New Category </a></span>
+</div>
+<br />
+<div>A Pie Chart</div>

@@ -2,84 +2,50 @@
 <html ng-app="expenseTrackerApp">
 	<head>
 		<title>The Expense Tracker</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- CSS Links -->
 		<link
 			href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
 			rel="stylesheet"
 		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+			integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+			crossorigin="anonymous"
+		/>
 		<link href="styles/styles.css" rel="stylesheet" type="text/css" />
 		<link href="styles/animations.css" rel="stylesheet" type="text/css" />
+
+		<!-- Script Links -->
+		<script src="scripts/angular.js" defer></script>
+		<script src="scripts/angular-route.js" defer></script>
+		<script src="scripts/angular-animate.js" defer></script>
+
+		<script src="app/app.js" defer></script>
+
+		<script src="app/controllers/expensesCtrl.js" defer></script>
+		<script src="app/services/expensesFactory.js" defer></script>
 	</head>
 	<body>
 		<header>
 			<nav class="navbar navbar-default">
 				<ul class="nav navbar-nav">
-					<li><a href="#/categories">Categories</a></li>
+					<li>
+						<a href="#/All_Categories">Categories</a>
+					</li>
 				</ul>
 			</nav>
 		</header>
 
-		<main>
-			<h1>Expense Tracker</h1>
-			<div ng-view>
-				<input
-					type="text"
-					placeholder="Search Description"
-					ng-model="customerFilter.name"
-				/>
-				<label for="sort">Sort By:</label>
-					<option>Sort</option>
-					<option value="date">Date</option>
-					<option value="category">Category</option>
-					<option value="type">Type</option>
-				</select>
-				<br /><br />
-				<table>
-					<tr>
-						<th>Date</th>
-						<th>Category</th>
-						<th>Description</th>
-						<th>Type</th>
-						<th>Amount</th>
-						<th></th>
-						<th>&nbsp;</th>
-					</tr>
-					<tr>
-						<td>date</td>
-						<td>category</td>
-						<td>description</td>
-						<td>type</td>
-						<td>amount</td>
-						<td class="center">
-                            <span>edit</span>
-							<span
-								class="
-									glyphicon
-									glyphicon-remove
-									delete
-								"
-							></span>
-
-						</td>
-					</tr>
-				</table>
-
-				<br />
-				<div>
-					<span> Add New Expense </span>
-					<span> Add New Category </span>
-				</div>
-				<div>A Pie Chart</div>
-				<footer>footer</footer>
-			</div>
+		<main ng-controller="ExpensesCtrl">
+			<div class="title">Expense Tracker</div>
+			<div ng-view></div>
+			<br />
 		</main>
-
-		<script src="scripts/angular.js"></script>
-		<script src="scripts/angular-route.js"></script>
-		<script src="scripts/angular-animate.js"></script>
-
-		<script src="app/app.js"></script>
-
-		<script src="app/controllers/tableController.js"></script>
+		<footer>footer</footer>
 	</body>
 </html>

@@ -1,13 +1,27 @@
+
+
 (function () {
 
-    var app = angular.module('customersApp', ['ngRoute', 'ngAnimate']);
+    const app = angular.module("expenseTrackerApp", ['ngRoute', 'ngAnimate']);
 
     app.config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                controller: 'tableController',
-                templateUrl: 'app/views/table.html'
+                controller: 'ExpensesCtrl',
+                templateUrl: 'app/views/expensesView.html'
             })
+            .when('/expenses/add_new_expense', {
+                controller: 'addExpenseCtrl',
+                templateUrl: 'app/views/expensesView.html'
+            })
+            // .when('/expenses/:category', {
+            //     controller: 'categoryCtrl',
+            //     templateUrl: 'app/views/expensesView.html'
+            // })
+            // .when('/expenses/:month', {
+            //     controller: 'monthCtrl',
+            //     templateUrl: 'app/views/expensesView.html'
+            // })
             .otherwise({ redirectTo: '/' });
     });
 

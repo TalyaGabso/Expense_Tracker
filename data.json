@@ -1,0 +1,30 @@
+{
+   "expenses": [
+      {
+         "date": "02/06/2021",
+         "category": "Bills",
+         "description": "Electricity",
+         "type": "Credit Card",
+         "amount": 212
+      },
+      {
+         "date": "06/05/2021",
+         "category": "Groceries",
+         "description": "House warming party",
+         "type": "Cash",
+         "amount": 1200
+      },
+      {
+         "date": "13/05/2021",
+         "category": "Car",
+         "description": "Gas - full tank",
+         "type": "Credit Card",
+         "amount": 280
+      }
+   ],
+   "categories": [
+      "Bills",
+      "Cash",
+      "Car"
+   ]
+}
